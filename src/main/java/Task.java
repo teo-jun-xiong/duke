@@ -12,8 +12,4 @@ abstract class Task {
         String getStatusIcon() {
             return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
         }
-
-        boolean getCompletionStatus() {
-            return this.isDone;
-        }
 }

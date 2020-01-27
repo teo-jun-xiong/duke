@@ -27,10 +27,6 @@ class DukeList {
          }
     }
 
-    boolean isTaskDone(int index) {
-         return this.list.get(index).getCompletionStatus();
-    }
-
     DukeList setDone(int index) {
          DukeList dl = new DukeList(this);
          dl.list.set(index, this.list.get(index).completeTask());
