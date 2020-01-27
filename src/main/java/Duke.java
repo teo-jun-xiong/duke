@@ -147,7 +147,7 @@ public class Duke {
                     writeTasks(dl, filePath);
                 } catch (IOException e) {
                     System.err.println(DukeFormatting.DIVIDER
-                        + "   T_T Something went wrong!\n"
+                        + "   (・_・;) Something went wrong!\n"
                         + DukeFormatting.DIVIDER);
                 }
 
