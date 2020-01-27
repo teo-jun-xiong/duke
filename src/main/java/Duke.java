@@ -1,9 +1,20 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
     private static void parseInput() {
+        File filePath = new File("data/myTasks.txt");
         Scanner sc = new Scanner(System.in);
-        DukeList dl = new DukeList();
+        DukeList dl;
+
+        try {
+            dl = retrieveTasks(filePath);
+        } catch (FileNotFoundException e) {
+            dl = new DukeList();
+        }
 
         while (sc.hasNext()) {
             String command = sc.next();
@@ -62,7 +73,7 @@ public class Duke {
                             } else {
                                 String[] arr = description.split(" /");
 
-                                if (arr.length == 1) {
+                                if (arr.length == 1 || (arr.length > 1 && arr[1].split(" ").length <= 1)) {
                                     throw new MissingDateTimeException("(''⊙＿⊙) The date and time of the "
                                             + command + " is missing.\n   Please try again!");
                                 }
@@ -132,9 +143,66 @@ public class Duke {
             }
 
             if (command.equals("bye")) {
+                try {
+                    writeTasks(dl, filePath);
+                } catch (IOException e) {
+                    System.err.println(DukeFormatting.DIVIDER
+                        + "   T_T Something went wrong!\n"
+                        + DukeFormatting.DIVIDER);
+                }
+
                 break;
             }
         }
+
+        sc.close();
+    }
+
+    private static void writeTasks(DukeList dl, File filePath) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < dl.listSize(); i++) {
+            String string = dl.printTask(i);
+            char taskType = string.charAt(1);
+            int isComplete = dl.isTaskDone(i) ? 1 : 0;
+            String[] arr = string.split("\\(");
+            String taskDescription = arr[0].substring(8).trim();
+            String taskInString = taskType + " | " + isComplete + " | " + taskDescription;
+
+            if (Character.toUpperCase(taskType) != 'T') {
+                String time = arr[1].split(":")[1];
+                time = time.trim().substring(0, time.length() - 2);
+                taskInString += " | " + time;
+            }
+
+            taskInString += "\n";
+            sb.append(taskInString);
+        }
+
+        System.out.println(sb.toString());
+        fw.write(sb.toString());
+        fw.close();
+    }
+
+    private static DukeList retrieveTasks(File filePath) throws FileNotFoundException {
+        DukeList dl = new DukeList();
+        Scanner sc = new Scanner(filePath);
+
+        while (sc.hasNextLine()) {
+            String[] details = sc.nextLine().split("\\|");
+            boolean isTaskDone = Integer.parseInt(details[1].trim()) == 1;
+
+            if (details[0].trim().equals("T")) {
+                dl.addToList(new ToDoTask(details[2], isTaskDone));
+            } else if (details[0].trim().equals("E")) {
+                dl.addToList(new EventTask(details[2], isTaskDone, details[3]));
+            } else {
+                dl.addToList(new DeadlineTask(details[2], isTaskDone, details[3]));
+            }
+        }
+
+        return dl;
     }
 
     public static void main(String[] args) {
