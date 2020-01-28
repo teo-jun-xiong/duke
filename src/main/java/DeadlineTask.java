@@ -1,6 +1,5 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class DeadlineTask extends Task {
@@ -8,12 +7,10 @@ public class DeadlineTask extends Task {
 
     private DeadlineTask(String description, boolean isDone, Date deadline) {
         super(description, isDone);
-
-        // parse stuff
         this.deadline = deadline;
     }
 
-    static DeadlineTask createTask(String description, boolean isDone, String text) throws ParseException, ArrayIndexOutOfBoundsException {
+    static DeadlineTask createDeadlineTask(String description, String text) throws ParseException, ArrayIndexOutOfBoundsException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");
@@ -24,7 +21,7 @@ public class DeadlineTask extends Task {
         String month = date[1];
         String year = date[2];
         Date deadline = format.parse(day + "/" + month + "/" + year + " " + hour + ":" + minute);
-        return new DeadlineTask(description, isDone, deadline);
+        return new DeadlineTask(description, false, deadline);
     }
 
     private String deadlineToString() {

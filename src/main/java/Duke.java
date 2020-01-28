@@ -73,8 +73,8 @@ public class Duke {
 
 
                                 task = command.equals("deadline")
-                                        ? DeadlineTask.createTask(arr[0], false, parameter)
-                                        : new EventTask(arr[0], false, parameter);
+                                        ? DeadlineTask.createDeadlineTask(arr[0], parameter)
+                                        : EventTask.createEventTask(arr[0], parameter);
                             }
 
                             dl = dl.addToList(task);
