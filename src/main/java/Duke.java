@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Duke {
@@ -12,15 +13,15 @@ public class Duke {
                 // Prints current list of tasks
                 case "list":
                     sc.nextLine();
-                    System.out.println(DukeFormatting.DIVIDER);
+                    System.out.println(DukeStringFormat.DIVIDER);
                     dl.printList();
-                    System.out.println(DukeFormatting.DIVIDER);
+                    System.out.println(DukeStringFormat.DIVIDER);
                     break;
 
                 case "bye":
                     sc.nextLine();
-                    System.out.println(DukeFormatting.DIVIDER + DukeFormatting.BYE
-                            + DukeFormatting.DIVIDER);
+                    System.out.println(DukeStringFormat.DIVIDER + DukeStringFormat.BYE
+                            + DukeStringFormat.DIVIDER);
                     break;
 
                 case "done":
@@ -35,14 +36,14 @@ public class Duke {
                         }
 
                         dl = dl.setDone(index);
-                        System.out.println(DukeFormatting.DIVIDER);
-                        System.out.println(DukeFormatting.DONE);
+                        System.out.println(DukeStringFormat.DIVIDER);
+                        System.out.println(DukeStringFormat.DONE);
                         System.out.println("      " + dl.printTask(index));
-                        System.out.println(DukeFormatting.DIVIDER);
+                        System.out.println(DukeStringFormat.DIVIDER);
                     } catch (DukeListIndexOutOfBoundsException e) {
-                        System.out.println(DukeFormatting.DIVIDER
-                                + e.getMessage() +"\n"
-                                + DukeFormatting.DIVIDER);
+                        System.out.println(DukeStringFormat.DIVIDER
+                                + e.getMessage() + "\n"
+                                + DukeStringFormat.DIVIDER);
                     }
 
                     break;
@@ -68,26 +69,32 @@ public class Duke {
                                 }
 
                                 String[] splitting = arr[1].split(" ");
-                                String parameter = splitting[0] + ": " + splitting[1];
+                                String parameter = splitting[0] + ": " + splitting[1] + " " + splitting[2];
+
+
                                 task = command.equals("deadline")
-                                        ? new DeadlineTask(arr[0], false, parameter)
+                                        ? DeadlineTask.createTask(arr[0], false, parameter)
                                         : new EventTask(arr[0], false, parameter);
                             }
 
                             dl = dl.addToList(task);
-                            System.out.println(DukeFormatting.DIVIDER
-                                    + DukeFormatting.ADDED
+                            System.out.println(DukeStringFormat.DIVIDER
+                                    + DukeStringFormat.ADDED
                                     + "      " + task.toString()
-                                    + "\n   Now you have " + dl.listSize()
+                                    + "\n\n   Now you have " + dl.listSize()
                                     + (dl.listSize() == 1 ? " task" : " tasks")
                                     + " in the list.\n"
-                                    + DukeFormatting.DIVIDER);
+                                    + DukeStringFormat.DIVIDER);
                         }
 
                     } catch (MissingDescriptionException | MissingDateTimeException e) {
-                        System.out.println(DukeFormatting.DIVIDER
+                        System.out.println(DukeStringFormat.DIVIDER
                                 + "   " + e.getMessage() + "\n"
-                                + DukeFormatting.DIVIDER);
+                                + DukeStringFormat.DIVIDER);
+                    } catch (ParseException | ArrayIndexOutOfBoundsException e) {
+                        System.out.println(DukeStringFormat.DIVIDER
+                                + "   (•̀ ᴗ •́ )و̑ The date and/or time format is invalid.\n   Please format your input as: DD/MM/YYYY HHmm.\n"
+                                + DukeStringFormat.DIVIDER);
                     }
                     break;
 
@@ -102,18 +109,18 @@ public class Duke {
                                     "   (✖╭╮✖) There are only " + dl.listSize() + " items in the list!");
                         }
 
-                        System.out.println(DukeFormatting.DIVIDER
-                                + DukeFormatting.DELETED + "      " + dl.printTask(index)
+                        System.out.println(DukeStringFormat.DIVIDER
+                                + DukeStringFormat.DELETED + "      " + dl.printTask(index)
                                 + "\n   Now you have " + (dl.listSize() - 1)
                                 + (dl.listSize() - 1 == 1 ? " task" : " tasks")
                                 + " in the list.\n"
-                                + DukeFormatting.DIVIDER);
+                                + DukeStringFormat.DIVIDER);
                         dl = dl.deleteTask(index);
 
                     } catch (DukeListIndexOutOfBoundsException e) {
-                        System.out.println(DukeFormatting.DIVIDER
-                                + e.getMessage() +"\n"
-                                + DukeFormatting.DIVIDER);
+                        System.out.println(DukeStringFormat.DIVIDER
+                                + e.getMessage() + "\n"
+                                + DukeStringFormat.DIVIDER);
                     }
 
                     break;
@@ -124,9 +131,9 @@ public class Duke {
                         throw new InvalidCommandArgumentException("(つ╥﹏╥)つ Hey, I can't do that for you. " +
                                 "\n   I don't know " + command + "...");
                     } catch (InvalidCommandArgumentException e) {
-                        System.out.println(DukeFormatting.DIVIDER
+                        System.out.println(DukeStringFormat.DIVIDER
                                 + "   " + e.getMessage() + "\n"
-                                + DukeFormatting.DIVIDER);
+                                + DukeStringFormat.DIVIDER);
                     }
                     break;
             }
@@ -138,7 +145,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        System.out.println(DukeFormatting.HELLO);
+        System.out.println(DukeStringFormat.HELLO);
         parseInput();
     }
 }

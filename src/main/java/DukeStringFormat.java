@@ -1,4 +1,4 @@
-class DukeFormatting {
+class DukeStringFormat {
     private static final String LOGO =
             "                  M\"\"\"\"\"\"\"`YM\"\"MMMMM\"\"MP\"\"\"\"\"\"`MM\n" +
             "                  M  mmmm.  M  MMMMM  M  mmmmm..M\n" +
@@ -9,12 +9,12 @@ class DukeFormatting {
             "                  MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n";
 
     static final String DIVIDER = "____________________________________________________________\n";
-    static final String HELLO = DukeFormatting.DIVIDER + DukeFormatting.LOGO
+    static final String HELLO = DukeStringFormat.DIVIDER + DukeStringFormat.LOGO
             + "   Hello!" +
                         "\n   The oNUS is on me to help you be productive! (>‿◠)✌\n"
-            + DukeFormatting.DIVIDER;
+            + DukeStringFormat.DIVIDER;
 
-    static final String ADDED = "   Got it. I've added this task:\n";
+    static final String ADDED = "   Got it! I've added this task:\n";
     static final String DONE = "   Nice! I've marked this task as done:\n";
     static final String DELETED = "   Alright, I've removed this task:\n";
     static final String BYE = "   Bye. Hope to see you again soon!\n";

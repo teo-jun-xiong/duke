@@ -1,9 +1,49 @@
-public class DeadlineTask extends Task {
-    private String deadline;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
-    DeadlineTask(String description, boolean isDone, String deadline) {
+public class DeadlineTask extends Task {
+    private Date deadline;
+
+    private DeadlineTask(String description, boolean isDone, Date deadline) {
         super(description, isDone);
+
+        // parse stuff
         this.deadline = deadline;
+    }
+
+    static DeadlineTask createTask(String description, boolean isDone, String text) throws ParseException, ArrayIndexOutOfBoundsException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+        String[] arr = text.split(" ");
+        String hour = arr[2].substring(0, 2);
+        String minute = arr[2].substring(2);
+        String[] date = arr[1].split("/");
+        String day = date[0];
+        String month = date[1];
+        String year = date[2];
+        Date deadline = format.parse(day + "/" + month + "/" + year + " " + hour + ":" + minute);
+        return new DeadlineTask(description, isDone, deadline);
+    }
+
+    private String deadlineToString() {
+        SimpleDateFormat format = new SimpleDateFormat("E HHmm, MMM d, YYYY");
+        String string = format.format(deadline);
+        String[] arr = string.split(",");
+
+        int day = deadline.getDate();
+        if (day == 1) {
+            arr[1] += "st";
+        } else if (day == 2) {
+            arr[1] += "nd";
+        } else if (day == 3) {
+            arr[1] += "rd";
+        } else {
+            arr[1] += "th";
+        }
+
+        return arr[0] + "," + arr[1] + "," + arr[2];
     }
 
     @Override
@@ -14,6 +54,6 @@ public class DeadlineTask extends Task {
     @Override
     public String toString() {
         return "[D] [" + super.getStatusIcon() + "] " + this.description
-                + " (" + this.deadline + ")";
+                + " (by: " + this.deadlineToString() + ")";
     }
 }
