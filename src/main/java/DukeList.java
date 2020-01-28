@@ -18,6 +18,9 @@ class DukeList {
          return dl;
     }
 
+    boolean isTaskDone(int index) {
+        return this.list.get(index).getCompletionStatus();
+    }
     void printList() {
          if (this.list.size() == 0) {
              System.out.println("   The list is empty.");
