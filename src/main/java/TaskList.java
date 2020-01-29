@@ -1,19 +1,20 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
-class DukeList {
+class TaskList {
     private List<Task> list;
 
-     DukeList() {
+     TaskList() {
         this.list = new ArrayList<>();
      }
 
-     private DukeList(DukeList dl) {
+     private TaskList(TaskList dl) {
          this.list = dl.list;
      }
 
-    DukeList addToList(Task task) {
-         DukeList dl = new DukeList(this);
+    TaskList addToList(Task task) {
+         TaskList dl = new TaskList(this);
          dl.list.add(task);
          return dl;
     }
@@ -30,8 +31,8 @@ class DukeList {
          }
     }
 
-    DukeList setDone(int index) {
-         DukeList dl = new DukeList(this);
+    TaskList setDone(int index) {
+         TaskList dl = new TaskList(this);
          dl.list.set(index, this.list.get(index).completeTask());
          return dl;
     }
@@ -44,8 +45,8 @@ class DukeList {
          return this.list.size();
     }
 
-    DukeList deleteTask(int index) {
-        DukeList dl = new DukeList(this);
+    TaskList deleteTask(int index) {
+        TaskList dl = new TaskList(this);
         dl.list.remove(index);
         return dl;
     }

@@ -2,10 +2,10 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
-class InputParser {
-    static void parse(DukeList dl) {
+class Parser {
+    static void parse(TaskList dl) {
         Scanner sc = new Scanner(System.in);
-        UI ui = new UI();
+        Ui ui = new Ui();
 
         while (sc.hasNext()) {
             String command = ui.readCommand(sc);
@@ -52,15 +52,15 @@ class InputParser {
                             if (command.equals("todo")) {
                                 task = new ToDoTask(description, false);
                             } else {
-                                String[] arr = description.split(" /");
-
-                                if (arr.length == 1 || (arr.length > 1 && arr[1].split(" ").length <= 1)) {
+                                String[] arr = description.split(" /by| /at");
+System.out.println(arr.length);
+                                if (arr.length == 0 || arr[0].split(" ").length <= 1) {
                                     throw new MissingDateTimeException("(''⊙＿⊙) The date and time of the "
                                             + command + " is missing.\n   Please try again!");
                                 }
 
                                 String[] splitting = arr[1].split(" ");
-                                String parameter = splitting[0] + ": " + splitting[1] + " " + splitting[2];
+                                String parameter = splitting[0] + splitting[1] + " " + splitting[2];
 
 
                                 task = command.equals("deadline")
@@ -114,7 +114,7 @@ class InputParser {
 
             if (command.equals("bye")) {
                 try {
-                    DukeStorage.writeTasks(dl, DukeStorage.filePath);
+                    Storage.writeTasks(dl);
                 } catch (IOException e) {
                     ui.printWriteErrorMessage();
                 }

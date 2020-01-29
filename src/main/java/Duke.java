@@ -1,21 +1,17 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.ParseException;
-import java.util.Scanner;
 
 public class Duke {
     private static void run() {
-        DukeList dl;
+        TaskList dl;
 
         try {
-            dl = DukeStorage.retrieveTasks(DukeStorage.filePath);
+            dl = Storage.retrieveTasks();
         } catch (FileNotFoundException | ParseException e) {
-            dl = new DukeList();
+            dl = new TaskList();
         }
 
-        InputParser.parse(dl);
+        Parser.parse(dl);
     }
 
 

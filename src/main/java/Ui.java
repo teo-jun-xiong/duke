@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-class UI {
+class Ui {
     String readCommand(Scanner sc) {
         return sc.next();
     }
 
-    void printList(Scanner sc, DukeList dl) {
+    void printList(Scanner sc, TaskList dl) {
         sc.nextLine();
         System.out.println(DukeStringFormat.DIVIDER);
         dl.printList();
@@ -22,7 +22,7 @@ class UI {
         return sc.nextLine().trim();
     }
 
-    void printDone(DukeList dl, int index) {
+    void printDone(TaskList dl, int index) {
         System.out.println(DukeStringFormat.DIVIDER);
         System.out.println(DukeStringFormat.DONE);
         System.out.println("      " + dl.printTask(index));
@@ -39,7 +39,7 @@ class UI {
         return sc.nextLine();
     }
 
-    void printTaskAdded(DukeList dl, Task task) {
+    void printTaskAdded(TaskList dl, Task task) {
         System.out.println(DukeStringFormat.DIVIDER
                 + DukeStringFormat.ADDED
                 + "      " + task.toString()
@@ -51,11 +51,12 @@ class UI {
 
     void printDateTimeErrorMessage() {
         System.out.println(DukeStringFormat.DIVIDER
-                + "   (•̀ ᴗ •́ )و̑ The date and/or time format is invalid.\n   Please format your input as: DD/MM/YYYY HHmm.\n"
+                + "   (•̀ ᴗ •́ )و̑ The date and/or time format is invalid.\n"
+                + "   Please format your input as: DD/MM/YYYY HHmm.\n"
                 + DukeStringFormat.DIVIDER);
     }
 
-    void printDelete(DukeList dl, int index) {
+    void printDelete(TaskList dl, int index) {
         System.out.println(DukeStringFormat.DIVIDER
                 + DukeStringFormat.DELETED + "      " + dl.printTask(index)
                 + "\n   Now you have " + (dl.listSize() - 1)

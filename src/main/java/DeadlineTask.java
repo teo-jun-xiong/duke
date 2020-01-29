@@ -14,9 +14,9 @@ public class DeadlineTask extends Task {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");
-        String hour = arr[2].substring(0, 2);
-        String minute = arr[2].substring(2);
-        String[] date = arr[1].split("/");
+        String hour = arr[1].substring(0, 2);
+        String minute = arr[1].substring(2);
+        String[] date = arr[0].split("/");
         String day = date[0];
         String month = date[1];
         String year = date[2];
