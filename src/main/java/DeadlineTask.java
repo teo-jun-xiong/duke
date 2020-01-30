@@ -10,13 +10,19 @@ public class DeadlineTask extends Task {
         this.deadline = deadline;
     }
 
-    static DeadlineTask createDeadlineTask(String description, String text) throws ParseException, ArrayIndexOutOfBoundsException {
+    static DeadlineTask createDeadlineTask(String description, String text) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");
         String hour = arr[1].substring(0, 2);
         String minute = arr[1].substring(2);
         String[] date = arr[0].split("/");
+
+        if (date.length != 3) {
+            throw new InvalidTaskDateTimeException("   The date and/or time format is invalid.\n"
+                    + "   Please format your input as: DD/MM/YYYY HHmm.");
+        }
+
         String day = date[0];
         String month = date[1];
         String year = date[2];

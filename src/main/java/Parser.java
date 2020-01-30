@@ -59,11 +59,16 @@ class Parser {
                             if (command.equals("todo")) {
                                 task = new ToDoTask(description, false);
                             } else {
+                                if (!description.contains("/by") && !description.contains("/at")) {
+                                    throw new MissingDateTimeException("   Missing \"by\" or \"at\" in task description.\n   Please try again.");
+                                }
+
                                 String[] arr = description.split(" /by| /at");
 
-                                if (arr.length == 0 || arr[0].split(" ").length <= 1) {
-                                    throw new MissingDateTimeException("The date and time of the "
-                                            + command + " is missing.\n   Please try again!");
+                                if (arr.length == 0 || arr[1].split(" ").length != 3) {
+                                    throw new MissingDateTimeException("   The date and time of the "
+                                            + command + " is missing.\n   Please try again!\n\n"
+                                            + DukeStringFormat.SAMPLE);
                                 }
 
                                 String[] splitting = arr[1].split(" ");
@@ -78,9 +83,9 @@ class Parser {
                             dl = dl.addToList(task);
                             ui.printTaskAdded(dl, task);
                         }
-                    } catch (MissingDescriptionException | MissingDateTimeException e) {
+                    } catch (MissingDescriptionException | MissingDateTimeException | InvalidTaskDateTimeException e) {
                         ui.printErrorMessage(e);
-                    } catch (ParseException | ArrayIndexOutOfBoundsException e) {
+                    } catch (ParseException e) {
                         ui.printDateTimeErrorMessage();
                     }
 
@@ -116,7 +121,7 @@ class Parser {
                 default:
                     try {
                         command = command + sc.nextLine();
-                        throw new InvalidCommandArgumentException("Hey, I can't do that for you. " +
+                        throw new InvalidCommandArgumentException("   Hey, I can't do that for you. " +
                                 "\n   I don't know " + command + "...");
                     } catch (InvalidCommandArgumentException e) {
                         ui.printErrorMessage(e);

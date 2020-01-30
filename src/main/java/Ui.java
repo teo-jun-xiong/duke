@@ -53,6 +53,7 @@ class Ui {
         System.out.println(DukeStringFormat.DIVIDER
                 + "   The date and/or time format is invalid.\n"
                 + "   Please format your input as: DD/MM/YYYY HHmm.\n"
+                + DukeStringFormat.SAMPLE
                 + DukeStringFormat.DIVIDER);
     }
 
