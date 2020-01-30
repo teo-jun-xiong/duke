@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * A class to handle interactions with the user.
+ * It prints responses to a user's command or input.
+ */
 class Ui {
     String readCommand(Scanner sc) {
         return sc.next().toLowerCase();
