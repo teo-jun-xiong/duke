@@ -29,7 +29,7 @@ class Parser {
                         }
                         int index = Integer.parseInt(str) - 1;
 
-                        if (index < 1) {
+                        if (index < 0) {
                             throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
                         }
 
@@ -95,7 +95,7 @@ class Parser {
                         }
                         int index = Integer.parseInt(delete) - 1;
 
-                        if (index < 1) {
+                        if (index < 0) {
                             throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
                         }
 
