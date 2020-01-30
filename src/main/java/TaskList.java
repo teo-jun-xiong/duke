@@ -50,4 +50,16 @@ class TaskList {
         dl.list.remove(index);
         return dl;
     }
+
+    TaskList find(String keywords) {
+         TaskList found = new TaskList();
+
+         for (Task task : this.list) {
+             if (task.match(keywords)) {
+                 found = found.addToList(task);
+             }
+         }
+
+         return found;
+    }
 }

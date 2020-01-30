@@ -2,11 +2,10 @@ import java.util.Scanner;
 
 class Ui {
     String readCommand(Scanner sc) {
-        return sc.next();
+        return sc.next().toLowerCase();
     }
 
     void printList(Scanner sc, TaskList dl) {
-        sc.nextLine();
         System.out.println(DukeStringFormat.DIVIDER);
         dl.printList();
         System.out.println(DukeStringFormat.DIVIDER);
@@ -37,6 +36,10 @@ class Ui {
 
     String readTaskDescription(Scanner sc) {
         return sc.nextLine().trim();
+    }
+
+    String readKeyword(Scanner sc) {
+        return sc.nextLine().trim().toLowerCase();
     }
 
     void printTaskAdded(TaskList dl, Task task) {
