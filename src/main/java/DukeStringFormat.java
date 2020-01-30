@@ -14,7 +14,7 @@ class DukeStringFormat {
                         "\n   The oNUS is on me to help you be productive!\n"
             + DukeStringFormat.DIVIDER;
 
-    static final String ADDED = "   Got it! I've added this task:\n";
+    static final String ADDED = "   Got it! I've added this task:\n\n";
     static final String DONE = "   Nice! I've marked this task as done:\n";
     static final String DELETED = "   Alright, I've removed this task:\n";
     static final String BYE = "   Your current task list has been saved!\n   Bye, hope to see you again soon!\n";

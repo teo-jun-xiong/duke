@@ -13,11 +13,18 @@ class Parser {
             switch (command) {
                 // Prints current list of tasks
                 case "list":
+                    sc.nextLine();
                     ui.printList(sc, dl);
                     break;
 
                 case "bye":
                     ui.printBye(sc);
+                    break;
+
+                case "find":
+                    String keywords = ui.readKeyword(sc);
+                    TaskList found = dl.find(keywords);
+                    ui.printList(sc, found);
                     break;
 
                 case "done":
@@ -39,7 +46,7 @@ class Parser {
                         }
 
                         dl = dl.setDone(index);
-                       ui.printDone(dl, index);
+                        ui.printDone(dl, index);
                     } catch (DukeListIndexOutOfBoundsException e) {
                         ui.printErrorMessage(e);
                     }

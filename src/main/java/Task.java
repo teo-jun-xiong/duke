@@ -10,10 +10,14 @@ abstract class Task {
     abstract Task completeTask();
 
     String getStatusIcon() {
-        return (isDone ? "✓" : "☓"); //return tick or X symbols
+        return (isDone ? "\u2714" : "\u274C"); //return tick or X symbols
     }
 
     boolean getCompletionStatus() {
         return this.isDone;
+    }
+
+    boolean match(String keywords) {
+        return this.description.toLowerCase().contains(keywords);
     }
 }
