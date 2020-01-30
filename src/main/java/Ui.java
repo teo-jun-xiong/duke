@@ -68,7 +68,7 @@ class Ui {
 
     void printWriteErrorMessage() {
         System.err.println(DukeStringFormat.DIVIDER
-                + "   (・_・;) Something went wrong!\n"
+                + "   Something went wrong with saving the file!\n"
                 + DukeStringFormat.DIVIDER);
     }
 }

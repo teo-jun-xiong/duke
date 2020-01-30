@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 class Storage {
-    private static final File filePath = new File("data/myTasks.txt");
+    private static final File filePath = new File("myTasks.txt");
 
     static void writeTasks(TaskList dl) throws IOException {
         FileWriter fw = new FileWriter(Storage.filePath);
@@ -30,7 +30,6 @@ class Storage {
             sb.append(taskInString);
         }
 
-        System.out.println(sb.toString());
         fw.write(sb.toString());
         fw.close();
     }
