@@ -7,7 +7,6 @@ abstract class Task {
         this.isDone = isDone;
     }
 
-    abstract Task completeTask();
 
     String getStatusIcon() {
         return (isDone ? "✓" : "☓"); //return tick or X symbols
@@ -16,4 +15,6 @@ abstract class Task {
     boolean getCompletionStatus() {
         return this.isDone;
     }
+
+    abstract Task completeTask();
 }

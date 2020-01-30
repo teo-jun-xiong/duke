@@ -18,10 +18,6 @@ class Ui {
                 + DukeStringFormat.DIVIDER);
     }
 
-    String readTaskIndex(Scanner sc) {
-        return sc.nextLine().trim();
-    }
-
     void printDone(TaskList dl, int index) {
         System.out.println(DukeStringFormat.DIVIDER);
         System.out.println(DukeStringFormat.DONE);
@@ -33,10 +29,6 @@ class Ui {
         System.out.println(DukeStringFormat.DIVIDER
                 + e.getMessage() + "\n"
                 + DukeStringFormat.DIVIDER);
-    }
-
-    String readTaskDescription(Scanner sc) {
-        return sc.nextLine().trim();
     }
 
     void printTaskAdded(TaskList dl, Task task) {
@@ -70,5 +62,13 @@ class Ui {
         System.err.println(DukeStringFormat.DIVIDER
                 + "   Something went wrong with saving the file!\n"
                 + DukeStringFormat.DIVIDER);
+    }
+
+    String readTaskDescription(Scanner sc) {
+        return sc.nextLine().trim();
+    }
+
+    String readTaskIndex(Scanner sc) {
+        return sc.nextLine().trim();
     }
 }
