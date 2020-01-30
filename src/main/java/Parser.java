@@ -24,11 +24,18 @@ class Parser {
                     String str = ui.readTaskIndex(sc);
 
                     try {
+                        if (str.length() == 0) {
+                            throw new DukeListIndexOutOfBoundsException("   No index entered. Please try again.");
+                        }
                         int index = Integer.parseInt(str) - 1;
+
+                        if (index < 1) {
+                            throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
+                        }
 
                         if (index >= dl.listSize()) {
                             throw new DukeListIndexOutOfBoundsException(
-                                    "   (✖╭╮✖) There are only " + dl.listSize() + " items in the list!");
+                                    "   There are only " + dl.listSize() + " items in the list!");
                         }
 
                         dl = dl.setDone(index);
@@ -45,7 +52,7 @@ class Parser {
                     String description = ui.readTaskDescription(sc);
                     try {
                         if (description.replace("\n", "").replace(" ", "").length() == 0) {
-                            throw new MissingDescriptionException("༼ つ◕_◕ ༽つ The description of a " + command
+                            throw new MissingDescriptionException("The description of a " + command
                                     + " cannot be empty.\n   Please try again!");
                         } else {
                             Task task;
@@ -53,9 +60,9 @@ class Parser {
                                 task = new ToDoTask(description, false);
                             } else {
                                 String[] arr = description.split(" /by| /at");
-System.out.println(arr.length);
+
                                 if (arr.length == 0 || arr[0].split(" ").length <= 1) {
-                                    throw new MissingDateTimeException("(''⊙＿⊙) The date and time of the "
+                                    throw new MissingDateTimeException("The date and time of the "
                                             + command + " is missing.\n   Please try again!");
                                 }
 
@@ -71,7 +78,6 @@ System.out.println(arr.length);
                             dl = dl.addToList(task);
                             ui.printTaskAdded(dl, task);
                         }
-
                     } catch (MissingDescriptionException | MissingDateTimeException e) {
                         ui.printErrorMessage(e);
                     } catch (ParseException | ArrayIndexOutOfBoundsException e) {
@@ -84,11 +90,18 @@ System.out.println(arr.length);
                     String delete = ui.readTaskIndex(sc);
 
                     try {
+                        if (delete.length() == 0) {
+                            throw new DukeListIndexOutOfBoundsException("   No index entered. Please try again.");
+                        }
                         int index = Integer.parseInt(delete) - 1;
+
+                        if (index < 1) {
+                            throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
+                        }
 
                         if (index >= dl.listSize()) {
                             throw new DukeListIndexOutOfBoundsException(
-                                    "   (✖╭╮✖) There are only " + dl.listSize() + " items in the list!");
+                                    "   There are only " + dl.listSize() + " items in the list!");
                         }
 
                         ui.printDelete(dl, index);
@@ -103,7 +116,7 @@ System.out.println(arr.length);
                 default:
                     try {
                         command = command + sc.nextLine();
-                        throw new InvalidCommandArgumentException("(つ╥﹏╥)つ Hey, I can't do that for you. " +
+                        throw new InvalidCommandArgumentException("Hey, I can't do that for you. " +
                                 "\n   I don't know " + command + "...");
                     } catch (InvalidCommandArgumentException e) {
                         ui.printErrorMessage(e);

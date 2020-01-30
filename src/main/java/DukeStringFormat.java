@@ -11,7 +11,7 @@ class DukeStringFormat {
     static final String DIVIDER = "____________________________________________________________\n";
     static final String HELLO = DukeStringFormat.DIVIDER + DukeStringFormat.LOGO
             + "   Hello!" +
-                        "\n   The oNUS is on me to help you be productive! (>‿◠)✌\n"
+                        "\n   The oNUS is on me to help you be productive!\n"
             + DukeStringFormat.DIVIDER;
 
     static final String ADDED = "   Got it! I've added this task:\n";

@@ -36,7 +36,7 @@ class Ui {
     }
 
     String readTaskDescription(Scanner sc) {
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     void printTaskAdded(TaskList dl, Task task) {
@@ -51,7 +51,7 @@ class Ui {
 
     void printDateTimeErrorMessage() {
         System.out.println(DukeStringFormat.DIVIDER
-                + "   (•̀ ᴗ •́ )و̑ The date and/or time format is invalid.\n"
+                + "   The date and/or time format is invalid.\n"
                 + "   Please format your input as: DD/MM/YYYY HHmm.\n"
                 + DukeStringFormat.DIVIDER);
     }
