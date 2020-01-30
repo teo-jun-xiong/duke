@@ -5,9 +5,18 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+/**
+ * A class to write to and read from a text file containing Strings of the Tasks.
+ */
 class Storage {
     private static final File filePath = new File("myTasks.txt");
 
+    /**
+     * Writes Tasks to a text file.
+     *
+     * @param dl A TaskList containing the current Tasks.
+     * @throws IOException if the file cannot be found.
+     */
     static void writeTasks(TaskList dl) throws IOException {
         FileWriter fw = new FileWriter(Storage.filePath);
         StringBuilder sb = new StringBuilder();
@@ -34,6 +43,13 @@ class Storage {
         fw.close();
     }
 
+    /**
+     * Retrieves a previous TaskList from a text file.
+     *
+     * @return A TaskList updated with the Tasks from the text file.
+     * @throws FileNotFoundException if the file cannot be found.
+     * @throws ParseException        if the date and time cannot be parsed.
+     */
     static TaskList retrieveTasks() throws FileNotFoundException, ParseException {
         TaskList dl = new TaskList();
         Scanner sc = new Scanner(Storage.filePath);
@@ -58,6 +74,12 @@ class Storage {
         return dl;
     }
 
+    /**
+     * Converts a String to a Date used in creating Tasks.
+     *
+     * @param detail A String of the details of a Task.
+     * @return A Date.
+     */
     private static String stringToDate(String detail) {
         String[] arr = detail.trim().split(", ");
         String time = arr[0].split(" ")[1];

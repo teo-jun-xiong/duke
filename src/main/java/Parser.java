@@ -2,7 +2,15 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+/**
+ * A class to accept and execute a user's commands.
+ */
 class Parser {
+    /**
+     * Parses and then executes a user's commands.
+     *
+     * @param dl A TaskList containing the current Tasks.
+     */
     static void parse(TaskList dl) {
         Scanner sc = new Scanner(System.in);
         Ui ui = new Ui();
@@ -25,22 +33,22 @@ class Parser {
 
                     try {
                         if (str.length() == 0) {
-                            throw new DukeListIndexOutOfBoundsException("   No index entered. Please try again.");
+                            throw new TaskListIndexOutOfBoundsException("   No index entered. Please try again.");
                         }
                         int index = Integer.parseInt(str) - 1;
 
                         if (index < 0) {
-                            throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
+                            throw new TaskListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
                         }
 
                         if (index >= dl.listSize()) {
-                            throw new DukeListIndexOutOfBoundsException(
+                            throw new TaskListIndexOutOfBoundsException(
                                     "   There are only " + dl.listSize() + " items in the list!");
                         }
 
                         dl = dl.setDone(index);
-                       ui.printDone(dl, index);
-                    } catch (DukeListIndexOutOfBoundsException e) {
+                        ui.printDone(dl, index);
+                    } catch (TaskListIndexOutOfBoundsException e) {
                         ui.printErrorMessage(e);
                     }
 
@@ -96,23 +104,23 @@ class Parser {
 
                     try {
                         if (delete.length() == 0) {
-                            throw new DukeListIndexOutOfBoundsException("   No index entered. Please try again.");
+                            throw new TaskListIndexOutOfBoundsException("   No index entered. Please try again.");
                         }
                         int index = Integer.parseInt(delete) - 1;
 
                         if (index < 0) {
-                            throw new DukeListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
+                            throw new TaskListIndexOutOfBoundsException("   Invalid index entered. Please try again.");
                         }
 
                         if (index >= dl.listSize()) {
-                            throw new DukeListIndexOutOfBoundsException(
+                            throw new TaskListIndexOutOfBoundsException(
                                     "   There are only " + dl.listSize() + " items in the list!");
                         }
 
                         ui.printDelete(dl, index);
                         dl = dl.deleteTask(index);
 
-                    } catch (DukeListIndexOutOfBoundsException e) {
+                    } catch (TaskListIndexOutOfBoundsException e) {
                         ui.printErrorMessage(e);
                     }
 
