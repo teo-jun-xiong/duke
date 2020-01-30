@@ -14,8 +14,6 @@ public class Duke {
         Parser.parse(dl);
     }
 
-
-
     public static void main(String[] args) {
         System.out.println(DukeStringFormat.HELLO);
         run();
