@@ -11,8 +11,7 @@ class ToDoTask extends Task {
      * Sets this ToDoTask's complete status to true.
      * Overrides the abstract method in Task.
      *
-     * @return A new complete ToDoTask with the same description,
-     * deadline as the ToDoTask instance.
+     * @return A new complete ToDoTask with the same description, deadline as the ToDoTask instance.
      */
     @Override
     ToDoTask completeTask() {

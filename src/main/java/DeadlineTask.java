@@ -78,8 +78,7 @@ public class DeadlineTask extends Task {
      * Sets this DeadlineTask's complete status to true.
      * Overrides the abstract method in Task.
      *
-     * @return A new complete DeadlineTask with the same description,
-     * deadline as the DeadlineTask instance.
+     * @return A new complete DeadlineTask with the same description, deadline as the DeadlineTask instance.
      */
     @Override
     DeadlineTask completeTask() {
