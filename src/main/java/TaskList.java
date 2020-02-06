@@ -48,13 +48,20 @@ class TaskList {
     /**
      * Prints all the Tasks in the TaskList.
      */
-    void printList() {
+    String printList() {
+        StringBuilder sb = new StringBuilder();
+
         if (this.list.size() == 0) {
-            System.out.println("   The list is empty.");
+            sb.append("   The list is empty.");
         }
         for (int i = 1; i <= list.size(); i++) {
-            System.out.println("   " + i + ". " + list.get(i - 1));
+            sb.append("      ").append(i).append(". ").append(list.get(i - 1));
+            if (i != list.size()) {
+                sb.append("\n");
+            }
         }
+
+        return sb.toString();
     }
 
     /**
@@ -70,7 +77,7 @@ class TaskList {
     }
 
     String printTask(int index) {
-        return this.list.get(index).toString();
+        return this.list.get(index).toString() + "\n";
     }
 
     int listSize() {

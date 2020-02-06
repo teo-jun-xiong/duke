@@ -18,26 +18,23 @@ import java.text.ParseException;
  * Main driver class for Duke.
  */
 public class Duke {
+    static TaskList dl;
+
     /**
      * Driver method for Duke.
      * Retrieves list from stored data if available, else start a new list.
      * The TaskList is then parsed with using input.
      */
-    static void run() {
-        TaskList dl;
-
+    void init() {
         try {
             dl = Storage.retrieveTasks();
         } catch (FileNotFoundException | ParseException e) {
             dl = new TaskList();
         }
-
-        Parser.parse(dl);
     }
 
-    public static void main(String[] args) {
-        System.out.println(DukeStringFormat.HELLO);
-        run();
+    private String executeCommand(String input) {
+        return Parser.parse(input);
     }
 
     /**
@@ -45,6 +42,6 @@ public class Duke {
      * Replace this stub with your completed method.
      */
     String getResponse(String input) {
-        return "Duke heard: " + input;
+        return executeCommand(input);
     }
 }

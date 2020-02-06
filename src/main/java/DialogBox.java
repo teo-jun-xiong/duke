@@ -51,12 +51,8 @@ public class DialogBox extends HBox {
         parameters.setFill(Color.TRANSPARENT);
         WritableImage image = new ImageView(img).snapshot(parameters, null);
 
-        // remove the rounding clip so that our effect can show through.
-        //displayPicture.setClip(null);
-
         // apply a shadow effect.
         displayPicture.setEffect(new DropShadow(5, Color.GRAY));
-
 
         dialog.setText(text);
         displayPicture.setImage(image);
