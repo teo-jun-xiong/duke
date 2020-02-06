@@ -5,77 +5,90 @@ import java.util.Scanner;
  * It prints responses to a user's command or input.
  */
 class Ui {
-    String readCommand(Scanner sc) {
-        return sc.next().toLowerCase();
+    static String readCommand(String input) {
+        return input.split(" ")[0].toLowerCase();
     }
 
-    void printList(Scanner sc, TaskList dl) {
-        System.out.println(DukeStringFormat.DIVIDER);
-        dl.printList();
-        System.out.println(DukeStringFormat.DIVIDER);
+    static String printList(TaskList dl) {
+        return DukeStringFormat.DIVIDER
+            + dl.printList()
+            + "\n" + DukeStringFormat.DIVIDER;
     }
 
-    void printBye(Scanner sc) {
-        sc.nextLine();
-        System.out.println(DukeStringFormat.DIVIDER + DukeStringFormat.BYE
+    static String printBye() {
+        return (DukeStringFormat.DIVIDER + DukeStringFormat.BYE
                 + DukeStringFormat.DIVIDER);
     }
 
-    String readTaskIndex(Scanner sc) {
-        return sc.nextLine().trim();
+    static String readTaskIndex(String input) {
+        return input.trim();
     }
 
-    void printDone(TaskList dl, int index) {
-        System.out.println(DukeStringFormat.DIVIDER);
-        System.out.println(DukeStringFormat.DONE);
-        System.out.println("      " + dl.printTask(index));
-        System.out.println(DukeStringFormat.DIVIDER);
+    static String printDone(TaskList dl, int index) {
+        return DukeStringFormat.DIVIDER
+                + DukeStringFormat.DONE
+                + "      " + dl.printTask(index)
+                + DukeStringFormat.DIVIDER;
     }
 
-    void printErrorMessage(Exception e) {
-        System.out.println(DukeStringFormat.DIVIDER
+    static String printErrorMessage(Exception e) {
+        return DukeStringFormat.DIVIDER
                 + e.getMessage() + "\n"
-                + DukeStringFormat.DIVIDER);
+                + DukeStringFormat.DIVIDER;
     }
 
-    String readTaskDescription(Scanner sc) {
-        return sc.nextLine().trim();
+    static String readTaskDescription(String input) {
+        return input.trim();
     }
 
-    String readKeyword(Scanner sc) {
-        return sc.nextLine().trim().toLowerCase();
+    static String readKeyword(String input) {
+        return input.trim().toLowerCase();
     }
 
-    void printTaskAdded(TaskList dl, Task task) {
-        System.out.println(DukeStringFormat.DIVIDER
+    static String printTaskAdded(TaskList dl, Task task) {
+        return DukeStringFormat.DIVIDER
                 + DukeStringFormat.ADDED
                 + "      " + task.toString()
                 + "\n\n   Now you have " + dl.listSize()
                 + (dl.listSize() == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeStringFormat.DIVIDER);
+                + DukeStringFormat.DIVIDER;
     }
 
-    void printDateTimeErrorMessage() {
-        System.out.println(DukeStringFormat.DIVIDER
+    static String printDateTimeErrorMessage() {
+        return DukeStringFormat.DIVIDER
                 + "   The date and/or time format is invalid.\n"
                 + "   Please format your input as: DD/MM/YYYY HHmm.\n"
                 + DukeStringFormat.SAMPLE
-                + DukeStringFormat.DIVIDER);
+                + DukeStringFormat.DIVIDER;
     }
 
-    void printDelete(TaskList dl, int index) {
-        System.out.println(DukeStringFormat.DIVIDER
+    static String printDelete(TaskList dl, int index) {
+        return DukeStringFormat.DIVIDER
                 + DukeStringFormat.DELETED + "      " + dl.printTask(index)
-                + "\n   Now you have " + (dl.listSize() - 1)
+                + "\n   Now you have " + dl.listSize()
                 + (dl.listSize() - 1 == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeStringFormat.DIVIDER);
+                + DukeStringFormat.DIVIDER;
     }
 
-    void printWriteErrorMessage() {
-        System.err.println(DukeStringFormat.DIVIDER
+    static String printWriteErrorMessage() {
+        return DukeStringFormat.DIVIDER
                 + "   Something went wrong with saving the file!\n"
-                + DukeStringFormat.DIVIDER);
+                + DukeStringFormat.DIVIDER;
+    }
+
+    static String printFind(String keywords, TaskList found) {
+        return DukeStringFormat.DIVIDER
+                + "   Here are the tasks with " + keywords + " in them:\n\n"
+                + found.printList()
+                + "\n" + DukeStringFormat.DIVIDER;
+    }
+
+    static String printClear() {
+        return DukeStringFormat.DIVIDER
+                + "   Your tasks have been cleared!\n"
+                + "   The list is now empty.\n\n"
+                + DukeStringFormat.DIVIDER;
     }
 }

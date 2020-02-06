@@ -59,14 +59,14 @@ class Storage {
             boolean isTaskDone = Integer.parseInt(details[1].trim()) == 1;
 
             if (details[0].trim().equals("T")) {
-                dl.addToList(new ToDoTask(details[2], isTaskDone));
+                dl.addToList(new ToDoTask(details[2].trim(), isTaskDone));
             } else {
                 String dateTime = stringToDate(details[3]);
 
                 if (details[0].trim().equals("E")) {
-                    dl.addToList(EventTask.createEventTask(details[2], dateTime));
+                    dl.addToList(EventTask.createEventTask(details[2].trim(), dateTime));
                 } else {
-                    dl.addToList(DeadlineTask.createDeadlineTask(details[2], dateTime));
+                    dl.addToList(DeadlineTask.createDeadlineTask(details[2].trim(), dateTime));
                 }
             }
         }
@@ -83,7 +83,7 @@ class Storage {
     private static String stringToDate(String detail) {
         String[] arr = detail.trim().split(", ");
         String time = arr[0].split(" ")[1];
-        String year = arr[2];
+        String year = arr[2].substring(0, 4);
 
         String[] dayMonth = arr[1].split(" ");
         String day = dayMonth[1].length() == 3 ? "0" + dayMonth[1].substring(0, 1) : dayMonth[1].substring(0, 2);

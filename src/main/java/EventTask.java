@@ -48,7 +48,7 @@ public class EventTask extends Task {
         String month = date[1];
         String year = date[2];
         Date deadline = format.parse(day + "/" + month + "/" + year + " " + hour + ":" + minute);
-        return new EventTask(description, false, deadline);
+        return new EventTask(description.trim(), false, deadline);
     }
 
     /**
