@@ -30,7 +30,8 @@ public class EventTask extends Task {
      * @return An Event.
      * @throws ParseException if parsing of String into Date fails
      */
-    static EventTask createEventTask(String description, String text) throws ParseException, ArrayIndexOutOfBoundsException {
+    static EventTask createEventTask(String description, String text) throws
+            ParseException, ArrayIndexOutOfBoundsException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");
@@ -78,8 +79,7 @@ public class EventTask extends Task {
      * Sets this EventTask's complete status to true.
      * Overrides the abstract method in Task.
      *
-     * @return A new complete EventTask with the same description,
-     * deadline as the EventTask instance.
+     * @return A new complete EventTask with the same description, deadline as the EventTask instance.
      */
     @Override
     EventTask completeTask() {
