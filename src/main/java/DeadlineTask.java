@@ -31,6 +31,9 @@ public class DeadlineTask extends Task {
      * @throws ParseException if parsing of String into Date fails
      */
     static DeadlineTask createDeadlineTask(String description, String text) throws ParseException {
+        assert description != null;
+        assert text != null;
+
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");

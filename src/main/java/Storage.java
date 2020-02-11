@@ -18,6 +18,8 @@ class Storage {
      * @throws IOException if the file cannot be found.
      */
     static void writeTasks(TaskList dl) throws IOException {
+        assert dl != null;
+
         FileWriter fw = new FileWriter(Storage.filePath);
         StringBuilder sb = new StringBuilder();
 
@@ -81,6 +83,8 @@ class Storage {
      * @return A Date.
      */
     private static String stringToDate(String detail) {
+        assert detail != null;
+
         String[] arr = detail.trim().split(", ");
         String time = arr[0].split(" ")[1];
         String year = arr[2].substring(0, 4);
