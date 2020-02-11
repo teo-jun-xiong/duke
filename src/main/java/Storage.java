@@ -94,41 +94,41 @@ class Storage {
         String month = dayMonth[0];
 
         switch (month) {
-            case "Jan":
-                month = "01";
+            case DukeConstant.JAN_STRING:
+                month = DukeConstant.JAN_NUM;
                 break;
-            case "Feb":
-                month = "02";
+            case DukeConstant.FEB_STRING:
+                month = DukeConstant.FEB_NUM;
                 break;
-            case "Mar":
-                month = "03";
+            case DukeConstant.MAR_STRING:
+                month = DukeConstant.MAR_NUM;
                 break;
-            case "Apr":
-                month = "04";
+            case DukeConstant.APR_STRING:
+                month = DukeConstant.APR_NUM;
                 break;
-            case "May":
-                month = "05";
+            case DukeConstant.MAY_STRING:
+                month = DukeConstant.MAY_NUM;
                 break;
-            case "Jun":
-                month = "06";
+            case DukeConstant.JUN_STRING:
+                month = DukeConstant.JUN_NUM;
                 break;
-            case "Jul":
-                month = "07";
+            case DukeConstant.JUL_STRING:
+                month = DukeConstant.JUL_NUM;
                 break;
-            case "Aug":
-                month = "08";
+            case DukeConstant.AUG_STRING:
+                month = DukeConstant.AUG_NUM;
                 break;
-            case "Sep":
-                month = "09";
+            case DukeConstant.SEP_STRING:
+                month = DukeConstant.SEP_NUM;
                 break;
-            case "Oct":
-                month = "10";
+            case DukeConstant.OCT_STRING:
+                month = DukeConstant.OCT_NUM;
                 break;
-            case "Nov":
-                month = "11";
+            case DukeConstant.NOV_STRING:
+                month = DukeConstant.NOV_NUM;
                 break;
-            case "Dec":
-                month = "12";
+            case DukeConstant.DEC_STRING:
+                month = DukeConstant.DEC_NUM;
                 break;
         }
 

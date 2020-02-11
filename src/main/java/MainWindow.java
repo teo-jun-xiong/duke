@@ -2,13 +2,11 @@ import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 /**
@@ -38,7 +36,7 @@ public class MainWindow extends AnchorPane {
     public void setDuke(Duke d) {
         duke = d;
         dialogContainer.getChildren().add(
-                0, DialogBox.getDukeDialog(DukeStringFormat.HELLO, dukeImage)
+                0, DialogBox.getDukeDialog(DukeString.HELLO, dukeImage)
         );
     }
 

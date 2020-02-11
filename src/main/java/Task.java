@@ -30,7 +30,7 @@ abstract class Task {
      * @return A String status icon.
      */
     String getStatusIcon() {
-        return (isDone ? "\u2714" : "\u274C"); //return tick or X symbols
+        return (isDone ? DukeConstant.TICK_ICON : DukeConstant.CROSS_ICON); //return tick or X symbols
     }
 
     boolean getCompletionStatus() {
@@ -38,6 +38,7 @@ abstract class Task {
     }
 
     boolean match(String keywords) {
+        assert keywords != null;
         return this.description.toLowerCase().contains(keywords);
     }
 }

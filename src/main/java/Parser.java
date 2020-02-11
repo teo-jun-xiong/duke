@@ -15,16 +15,16 @@ class Parser {
 
         switch (command) {
             // Prints current list of tasks
-            case "list":
+            case DukeConstant.LIST_COMMAND:
                 sb.append(Ui.printList(Duke.dl));
                 break;
 
-            case "clear":
+            case DukeConstant.CLEAR_COMMAND:
                 Duke.dl = new TaskList();
                 sb.append(Ui.printClear());
                 break;
 
-            case "bye":
+            case DukeConstant.BYE_COMMAND:
                 try {
                     Storage.writeTasks(Duke.dl);
                 } catch (IOException e) {
@@ -34,13 +34,13 @@ class Parser {
                 sb.append(Ui.printBye());
                 break;
 
-            case "find":
+            case DukeConstant.FIND_COMMAND:
                 String keywords = Ui.readKeyword(input.substring(command.length()));
                 TaskList found = Duke.dl.find(keywords);
                 sb.append(Ui.printFind(keywords, found));
                 break;
 
-            case "done":
+            case DukeConstant.DONE_COMMAND:
                 String str = Ui.readTaskIndex(input.substring(command.length()));
 
                 try {
@@ -66,36 +66,38 @@ class Parser {
 
                 break;
 
-            case "todo":
-            case "deadline":
-            case "event":
+            case DukeConstant.TODO_COMMAND:
+            case DukeConstant.DEADLINE_COMMAND:
+            case DukeConstant.EVENT_COMMAND:
                 String description = Ui.readTaskDescription(input.substring(command.length()));
+
                 try {
                     if (description.replace("\n", "").replace(" ", "").length() == 0) {
                         throw new MissingDescriptionException("The description of a " + command
                                 + " cannot be empty.\n   Please try again!");
                     } else {
                         Task task;
-                        if (command.equals("todo")) {
+                        if (command.equals(DukeConstant.TODO_COMMAND)) {
                             task = new ToDoTask(description, false);
                         } else {
-                            if (!description.contains("/by") && !description.contains("/at")) {
+                            if (!description.contains(DukeConstant.DELIMITER_BY)
+                                    && !description.contains(DukeConstant.DELIMITER_AT)) {
                                 throw new MissingDateTimeException("   Missing \"/by\" or \"/at\" in task description.\n   Please try again.");
                             }
 
                             String[] arr = description.split("/by|/at");
 
-                            if (arr.length == 0 || arr[1].split(" ").length != 3) {
+                            if (arr.length == 0 || arr[1].split(DukeConstant.DELIMITER_WHITESPACE).length != 3) {
                                 throw new MissingDateTimeException("   The date and time of the "
                                         + command + " is missing.\n   Please try again!\n\n"
-                                        + DukeStringFormat.SAMPLE);
+                                        + DukeString.SAMPLE);
                             }
 
-                            String[] splitting = arr[1].trim().split(" ");
+                            String[] splitting = arr[1].trim().split(DukeConstant.DELIMITER_WHITESPACE);
                             String parameter = splitting[0] + " " + splitting[1];
 
 
-                            task = command.equals("deadline")
+                            task = command.equals(DukeConstant.DEADLINE_COMMAND)
                                     ? DeadlineTask.createDeadlineTask(arr[0], parameter)
                                     : EventTask.createEventTask(arr[0], parameter);
                         }
@@ -111,7 +113,7 @@ class Parser {
 
                 break;
 
-            case "delete":
+            case DukeConstant.DELETE_COMMAND:
                 String delete = Ui.readTaskIndex(input.substring(command.length()));
 
                 try {
