@@ -103,6 +103,8 @@ class TaskList {
      * @return A TaskList containing all the matching Tasks.
      */
     TaskList find(String keywords) {
+        assert keywords != null;
+
         TaskList found = new TaskList();
 
         for (Task task : this.list) {

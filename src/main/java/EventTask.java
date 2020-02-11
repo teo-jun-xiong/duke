@@ -32,6 +32,9 @@ public class EventTask extends Task {
      */
     static EventTask createEventTask(String description, String text) throws
             ParseException, ArrayIndexOutOfBoundsException {
+        assert description != null;
+        assert text != null;
+
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
         String[] arr = text.split(" ");
