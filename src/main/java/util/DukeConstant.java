@@ -32,6 +32,7 @@ public class DukeConstant {
     public static final String CLEAR_COMMAND = "clear";
     public static final String BYE_COMMAND = "bye";
     public static final String FIND_COMMAND = "find";
+    public static final String SCHEDULE_COMMAND = "schedule";
     public static final String DONE_COMMAND = "done";
     public static final String TODO_COMMAND = "todo";
     public static final String DEADLINE_COMMAND = "deadline";

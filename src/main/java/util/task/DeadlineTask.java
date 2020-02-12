@@ -9,7 +9,7 @@ import java.util.Date;
  * A deadline task has a description, a deadline date, and a true or false on whether it is completed.
  */
 public class DeadlineTask extends Task {
-    private Date deadline;
+    Date deadline;
 
     /**
      * Creates a util.task.DeadlineTask object.

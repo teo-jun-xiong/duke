@@ -75,6 +75,25 @@ public class Parser {
         return format.parse(day + "/" + month + "/" + year + " " + hour + ":" + minute);
     }
 
+    private static Date stringNoTimeToDate(String parameter) throws ParseException {
+        assert parameter != null;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        String[] date = parameter.split(DukeConstant.DELIMITER_DATE);
+
+        // Input date is too short/long
+        if (date.length != 3) {
+            throw new InvalidTaskDateTimeException("   The date and/or time format is invalid.\n"
+                    + "   Please format your input as: DD/MM/YYYY HHmm.");
+        }
+
+        String day = date[DukeConstant.DATE_DAY_INDEX];
+        String month = date[DukeConstant.DATE_MONTH_INDEX];
+        String year = date[DukeConstant.DATE_YEAR_INDEX];
+        return format.parse(day + "/" + month + "/" + year);
+    }
+
     /**
      * Parses and then executes a user's commands.
      */
@@ -111,6 +130,26 @@ public class Parser {
                 String keywords = Ui.readKeyword(input.substring(command.length()));
                 TaskList found = Duke.dl.find(keywords);
                 sb.append(Ui.printFind(keywords, found));
+                break;
+
+            case DukeConstant.SCHEDULE_COMMAND:
+                String scheduleString = Ui.readScheduleDate(input.substring(command.length()));
+
+                try {
+                    if (scheduleString.length() != 10) {
+                        throw new InvalidTaskDateTimeException("   The date of the schedule is invalid.\n" +
+                                "   Please try again!\n");
+                    }
+                    
+                    Date scheduleDate = stringNoTimeToDate(scheduleString);
+                    TaskList schedule = Duke.dl.findByDay(scheduleDate);
+                    sb.append(Ui.printList(schedule));
+                } catch (InvalidTaskDateTimeException e) {
+                    sb.append(Ui.printErrorMessage(e));
+                } catch (ParseException e) {
+                    sb.append(Ui.printDateTimeErrorMessage());
+                }
+
                 break;
 
             case DukeConstant.DONE_COMMAND:

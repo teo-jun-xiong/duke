@@ -103,4 +103,9 @@ class Ui {
     public static String printHelp() {
         return DukeUiString.UI_HELP;
     }
+
+    public static String readScheduleDate(String input) {
+        assert input != null;
+        return input.trim();
+    }
 }

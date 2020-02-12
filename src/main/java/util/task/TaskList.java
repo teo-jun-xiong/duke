@@ -1,6 +1,7 @@
 package util.task;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -117,4 +118,21 @@ public class TaskList {
 
         return found;
     }
+
+     public TaskList findByDay(Date date) {
+        TaskList temp = new TaskList();
+
+        for (Task t : this.list) {
+            if (t instanceof DeadlineTask || t instanceof EventTask) {
+                Date tDate = t instanceof DeadlineTask ? ((DeadlineTask) t).deadline : ((EventTask) t).deadline;
+
+                if (date.getYear() == tDate.getYear() && date.getMonth() == tDate.getMonth()
+                        && date.getDay() == tDate.getDay()) {
+                    temp = temp.addToList(t);
+                }
+            }
+        }
+
+        return temp;
+     }
 }

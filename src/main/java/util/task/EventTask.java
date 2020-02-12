@@ -9,7 +9,7 @@ import java.util.Date;
  * An event has a description, a date, and a true or false on whether it is completed.
  */
 public class EventTask extends Task {
-    private Date deadline;
+    Date deadline;
 
     /**
      * Creates a util.task.EventTask object.
