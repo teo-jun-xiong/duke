@@ -1,3 +1,8 @@
+package util;
+
+import util.task.Task;
+import util.task.TaskList;
+
 /**
  * A class to handle interactions with the user.
  * It prints responses to a user's command or input.
@@ -10,14 +15,13 @@ class Ui {
 
     static String printList(TaskList dl) {
         assert dl != null;
-        return DukeStringFormat.DIVIDER
+        return DukeUIString.DIVIDER
             + dl.printList()
-            + "\n" + DukeStringFormat.DIVIDER;
+            + "\n" + DukeUIString.DIVIDER;
     }
 
     static String printBye() {
-        return (DukeStringFormat.DIVIDER + DukeStringFormat.BYE
-                + DukeStringFormat.DIVIDER);
+        return DukeUIString.UI_BYE;
     }
 
     static String readTaskIndex(String input) {
@@ -28,16 +32,16 @@ class Ui {
     static String printDone(TaskList dl, int index) {
         assert dl != null;
 
-        return DukeStringFormat.DIVIDER
-                + DukeStringFormat.DONE
+        return DukeUIString.DIVIDER
+                + DukeUIString.DONE
                 + "      " + dl.printTask(index)
-                + DukeStringFormat.DIVIDER;
+                + DukeUIString.DIVIDER;
     }
 
     static String printErrorMessage(Exception e) {
-        return DukeStringFormat.DIVIDER
+        return DukeUIString.DIVIDER
                 + e.getMessage() + "\n"
-                + DukeStringFormat.DIVIDER;
+                + DukeUIString.DIVIDER;
     }
 
     static String readTaskDescription(String input) {
@@ -54,54 +58,45 @@ class Ui {
         assert dl != null;
         assert task != null;
 
-        return DukeStringFormat.DIVIDER
-                + DukeStringFormat.ADDED
+        return DukeUIString.DIVIDER
+                + DukeUIString.ADDED
                 + "      " + task.toString()
                 + "\n\n   Now you have " + dl.listSize()
                 + (dl.listSize() == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeStringFormat.DIVIDER;
+                + DukeUIString.DIVIDER;
     }
 
     static String printDateTimeErrorMessage() {
-        return DukeStringFormat.DIVIDER
-                + "   The date and/or time format is invalid.\n"
-                + "   Please format your input as: DD/MM/YYYY HHmm.\n"
-                + DukeStringFormat.SAMPLE
-                + DukeStringFormat.DIVIDER;
+        return DukeUIString.DATE_TIME_ERROR_MESSAGE;
     }
 
     static String printDelete(TaskList dl, int index) {
         assert dl != null;
 
-        return DukeStringFormat.DIVIDER
-                + DukeStringFormat.DELETED + "      " + dl.printTask(index)
+        return DukeUIString.DIVIDER
+                + DukeUIString.DELETED + "      " + dl.printTask(index)
                 + "\n   Now you have " + dl.listSize()
                 + (dl.listSize() - 1 == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeStringFormat.DIVIDER;
+                + DukeUIString.DIVIDER;
     }
 
     static String printWriteErrorMessage() {
-        return DukeStringFormat.DIVIDER
-                + "   Something went wrong with saving the file!\n"
-                + DukeStringFormat.DIVIDER;
+        return DukeUIString.WRITE_ERROR_MESSAGE;
     }
 
     static String printFind(String keywords, TaskList found) {
         assert keywords != null;
         assert found != null;
 
-        return DukeStringFormat.DIVIDER
+        return DukeUIString.DIVIDER
                 + "   Here are the tasks with " + keywords + " in them:\n\n"
                 + found.printList()
-                + "\n" + DukeStringFormat.DIVIDER;
+                + "\n" + DukeUIString.DIVIDER;
     }
 
     static String printClear() {
-        return DukeStringFormat.DIVIDER
-                + "   Your tasks have been cleared!\n"
-                + "   The list is now empty.\n\n"
-                + DukeStringFormat.DIVIDER;
+        return DukeUIString.UI_CLEAR;
     }
 }

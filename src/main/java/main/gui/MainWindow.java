@@ -1,18 +1,21 @@
+package main.gui;
+
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import main.Duke;
+import main.gui.DialogBox;
+import util.DukeUIString;
 
 /**
- * Controller for MainWindow. Provides the layout for the other controls.
+ * Controller for gui.MainWindow. Provides the layout for the other controls.
  */
 public class MainWindow extends AnchorPane {
     @FXML
@@ -38,12 +41,12 @@ public class MainWindow extends AnchorPane {
     public void setDuke(Duke d) {
         duke = d;
         dialogContainer.getChildren().add(
-                0, DialogBox.getDukeDialog(DukeStringFormat.HELLO, dukeImage)
+                0, DialogBox.getDukeDialog(DukeUIString.HELLO, dukeImage)
         );
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing main.Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML

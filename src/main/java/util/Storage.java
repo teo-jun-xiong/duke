@@ -1,14 +1,22 @@
+package util;
+
+import util.task.DeadlineTask;
+import util.task.EventTask;
+import util.task.TaskList;
+import util.task.ToDoTask;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
  * A class to write to and read from a text file containing Strings of the Tasks.
  */
-class Storage {
+public class Storage {
     private static final File filePath = new File("myTasks.txt");
 
     /**
@@ -17,7 +25,7 @@ class Storage {
      * @param dl A TaskList containing the current Tasks.
      * @throws IOException if the file cannot be found.
      */
-    static void writeTasks(TaskList dl) throws IOException {
+    public static void writeTasks(TaskList dl) throws IOException {
         assert dl != null;
 
         FileWriter fw = new FileWriter(Storage.filePath);
@@ -52,7 +60,7 @@ class Storage {
      * @throws FileNotFoundException if the file cannot be found.
      * @throws ParseException        if the date and time cannot be parsed.
      */
-    static TaskList retrieveTasks() throws FileNotFoundException, ParseException {
+    public static TaskList retrieveTasks() throws FileNotFoundException, ParseException {
         TaskList dl = new TaskList();
         Scanner sc = new Scanner(Storage.filePath);
 
@@ -64,11 +72,11 @@ class Storage {
                 dl.addToList(new ToDoTask(details[2].trim(), isTaskDone));
             } else {
                 String dateTime = stringToDate(details[3]);
-
+                Date deadline = Parser.stringToDate(dateTime);
                 if (details[0].trim().equals("E")) {
-                    dl.addToList(EventTask.createEventTask(details[2].trim(), dateTime));
+                    dl.addToList(EventTask.createEventTask(details[2].trim(), deadline));
                 } else {
-                    dl.addToList(DeadlineTask.createDeadlineTask(details[2].trim(), dateTime));
+                    dl.addToList(DeadlineTask.createDeadlineTask(details[2].trim(), deadline));
                 }
             }
         }
@@ -82,7 +90,7 @@ class Storage {
      * @param detail A String of the details of a Task.
      * @return A Date.
      */
-    private static String stringToDate(String detail) {
+    public  static String stringToDate(String detail) {
         assert detail != null;
 
         String[] arr = detail.trim().split(", ");
@@ -94,41 +102,41 @@ class Storage {
         String month = dayMonth[0];
 
         switch (month) {
-            case "Jan":
-                month = "01";
+            case DukeConstant.JAN_STRING:
+                month = DukeConstant.JAN_NUM;
                 break;
-            case "Feb":
-                month = "02";
+            case DukeConstant.FEB_STRING:
+                month = DukeConstant.FEB_NUM;
                 break;
-            case "Mar":
-                month = "03";
+            case DukeConstant.MAR_STRING:
+                month = DukeConstant.MAR_NUM;
                 break;
-            case "Apr":
-                month = "04";
+            case DukeConstant.APR_STRING:
+                month = DukeConstant.APR_NUM;
                 break;
-            case "May":
-                month = "05";
+            case DukeConstant.MAY_STRING:
+                month = DukeConstant.MAY_NUM;
                 break;
-            case "Jun":
-                month = "06";
+            case DukeConstant.JUN_STRING:
+                month = DukeConstant.JUN_NUM;
                 break;
-            case "Jul":
-                month = "07";
+            case DukeConstant.JUL_STRING:
+                month = DukeConstant.JUL_NUM;
                 break;
-            case "Aug":
-                month = "08";
+            case DukeConstant.AUG_STRING:
+                month = DukeConstant.AUG_NUM;
                 break;
-            case "Sep":
-                month = "09";
+            case DukeConstant.SEP_STRING:
+                month = DukeConstant.SEP_NUM;
                 break;
-            case "Oct":
-                month = "10";
+            case DukeConstant.OCT_STRING:
+                month = DukeConstant.OCT_NUM;
                 break;
-            case "Nov":
-                month = "11";
+            case DukeConstant.NOV_STRING:
+                month = DukeConstant.NOV_NUM;
                 break;
-            case "Dec":
-                month = "12";
+            case DukeConstant.DEC_STRING:
+                month = DukeConstant.DEC_NUM;
                 break;
         }
 
