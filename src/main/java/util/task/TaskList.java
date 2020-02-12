@@ -1,35 +1,37 @@
+package util.task;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Represents a list of Tasks.
  */
-class TaskList {
+public class TaskList {
     private List<Task> list;
 
     /**
-     * Creates an empty TaskList with no tasks.
+     * Creates an empty util.task.TaskList with no tasks.
      */
-    TaskList() {
+    public TaskList() {
         this.list = new ArrayList<>();
     }
 
     /**
-     * Creates a copy of the TaskList with the same list of Tasks.
+     * Creates a copy of the util.task.TaskList with the same list of Tasks.
      *
-     * @param dl A TaskList.
+     * @param dl A util.task.TaskList.
      */
     private TaskList(TaskList dl) {
         this.list = dl.list;
     }
 
     /**
-     * Adds a Task to a TaskList.
+     * Adds a Task to a util.task.TaskList.
      *
      * @param task The Task to be added.
-     * @return A new TaskList with the added Task.
+     * @return A new util.task.TaskList with the added Task.
      */
-    TaskList addToList(Task task) {
+    public TaskList addToList(Task task) {
         TaskList dl = new TaskList(this);
         dl.list.add(task);
         return dl;
@@ -41,14 +43,14 @@ class TaskList {
      * @param index The index of the Task to be checked.
      * @return A boolean of whether the Task has been completed.
      */
-    boolean isTaskDone(int index) {
+    public boolean isTaskDone(int index) {
         return this.list.get(index).getCompletionStatus();
     }
 
     /**
-     * Prints all the Tasks in the TaskList.
+     * Prints all the Tasks in the util.task.TaskList.
      */
-    String printList() {
+    public String printList() {
         StringBuilder sb = new StringBuilder();
 
         if (this.list.size() == 0) {
@@ -68,19 +70,19 @@ class TaskList {
      * Sets a Task to be completed.
      *
      * @param index The index of the Task to be completed.
-     * @return A new TaskList with the updated Task.
+     * @return A new util.task.TaskList with the updated Task.
      */
-    TaskList setDone(int index) {
+    public TaskList setDone(int index) {
         TaskList dl = new TaskList(this);
         dl.list.set(index, this.list.get(index).completeTask());
         return dl;
     }
 
-    String printTask(int index) {
+    public String printTask(int index) {
         return this.list.get(index).toString() + "\n";
     }
 
-    int listSize() {
+    public int listSize() {
         return this.list.size();
     }
 
@@ -88,9 +90,9 @@ class TaskList {
      * Deletes a Task.
      *
      * @param index The index of the Task to be deleted.
-     * @return A new TaskList without the deleted Task.
+     * @return A new util.task.TaskList without the deleted Task.
      */
-    TaskList deleteTask(int index) {
+    public TaskList deleteTask(int index) {
         TaskList dl = new TaskList(this);
         dl.list.remove(index);
         return dl;
@@ -100,9 +102,9 @@ class TaskList {
      * Finds all the Tasks that contain the keyword(s).
      *
      * @param keywords A String of keywords.
-     * @return A TaskList containing all the matching Tasks.
+     * @return A util.task.TaskList containing all the matching Tasks.
      */
-    TaskList find(String keywords) {
+    public TaskList find(String keywords) {
         assert keywords != null;
 
         TaskList found = new TaskList();

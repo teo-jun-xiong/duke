@@ -1,3 +1,8 @@
+package util;
+
+import util.task.Task;
+import util.task.TaskList;
+
 /**
  * A class to handle interactions with the user.
  * It prints responses to a user's command or input.

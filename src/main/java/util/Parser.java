@@ -1,3 +1,9 @@
+package util;
+
+import exception.*;
+import main.Duke;
+import util.task.*;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,7 +12,7 @@ import java.util.Date;
 /**
  * A class to accept and execute a user's commands.
  */
-class Parser {
+public class Parser {
     /**
      * Converts a Task's date to a String.
      *
@@ -63,7 +69,7 @@ class Parser {
     /**
      * Parses and then executes a user's commands.
      */
-    static String parse(String input) {
+    public static String parse(String input) {
         assert input != null;
         String command = Ui.readCommand(input);
         StringBuilder sb = new StringBuilder();

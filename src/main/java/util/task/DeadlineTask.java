@@ -1,3 +1,7 @@
+package util.task;
+
+import util.Parser;
+
 import java.util.Date;
 
 /**
@@ -8,7 +12,7 @@ public class DeadlineTask extends Task {
     private Date deadline;
 
     /**
-     * Creates a DeadlineTask object.
+     * Creates a util.task.DeadlineTask object.
      *
      * @param description The String description of the deadline task.
      * @param isDone      The boolean variable on whether the deadline task is completed.
@@ -20,14 +24,14 @@ public class DeadlineTask extends Task {
     }
 
     /**
-     * Static method to create a DeadlineTask object.
+     * Static method to create a util.task.DeadlineTask object.
      * Throws an exception if the input text is not in the required format.
      *
      * @param description The String description of the deadline task.
      * @param deadline    The Date object of the date and time of the deadline.
-     * @return A DeadlineTask.
+     * @return A util.task.DeadlineTask.
      */
-    static DeadlineTask createDeadlineTask(String description, Date deadline) {
+    public static DeadlineTask createDeadlineTask(String description, Date deadline) {
         assert description != null;
         assert deadline != null;
 
@@ -35,13 +39,13 @@ public class DeadlineTask extends Task {
     }
 
     /**
-     * Sets this DeadlineTask's complete status to true.
-     * Overrides the abstract method in Task.
+     * Sets this util.task.DeadlineTask's complete status to true.
+     * Overrides the abstract method in util.Task.
      *
-     * @return A new complete DeadlineTask with the same description, deadline as the DeadlineTask instance.
+     * @return A new complete util.task.DeadlineTask with the same description, deadline as the util.task.DeadlineTask instance.
      */
     @Override
-    DeadlineTask completeTask() {
+    public DeadlineTask completeTask() {
         return new DeadlineTask(this.description, true, this.deadline);
     }
 

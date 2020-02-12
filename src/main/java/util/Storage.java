@@ -1,3 +1,10 @@
+package util;
+
+import util.task.DeadlineTask;
+import util.task.EventTask;
+import util.task.TaskList;
+import util.task.ToDoTask;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,7 +16,7 @@ import java.util.Scanner;
 /**
  * A class to write to and read from a text file containing Strings of the Tasks.
  */
-class Storage {
+public class Storage {
     private static final File filePath = new File("myTasks.txt");
 
     /**
@@ -18,7 +25,7 @@ class Storage {
      * @param dl A TaskList containing the current Tasks.
      * @throws IOException if the file cannot be found.
      */
-    static void writeTasks(TaskList dl) throws IOException {
+    public static void writeTasks(TaskList dl) throws IOException {
         assert dl != null;
 
         FileWriter fw = new FileWriter(Storage.filePath);
@@ -53,7 +60,7 @@ class Storage {
      * @throws FileNotFoundException if the file cannot be found.
      * @throws ParseException        if the date and time cannot be parsed.
      */
-    static TaskList retrieveTasks() throws FileNotFoundException, ParseException {
+    public static TaskList retrieveTasks() throws FileNotFoundException, ParseException {
         TaskList dl = new TaskList();
         Scanner sc = new Scanner(Storage.filePath);
 
@@ -83,7 +90,7 @@ class Storage {
      * @param detail A String of the details of a Task.
      * @return A Date.
      */
-    private static String stringToDate(String detail) {
+    public  static String stringToDate(String detail) {
         assert detail != null;
 
         String[] arr = detail.trim().split(", ");

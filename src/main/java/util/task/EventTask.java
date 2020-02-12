@@ -1,3 +1,7 @@
+package util.task;
+
+import util.Parser;
+
 import java.util.Date;
 
 /**
@@ -8,7 +12,7 @@ public class EventTask extends Task {
     private Date deadline;
 
     /**
-     * Creates a EventTask object.
+     * Creates a util.task.EventTask object.
      *
      * @param description The String description of the event.
      * @param isDone      The boolean variable on whether the event is completed.
@@ -20,14 +24,14 @@ public class EventTask extends Task {
     }
 
     /**
-     * Static method to create an EventTask object.
+     * Static method to create an util.task.EventTask object.
      * Throws an exception if the input text is not in the required format.
      *
      * @param description The String description of the event.
      * @param deadline    The String of the date and time of the event.
      * @return An Event.
      */
-    static EventTask createEventTask(String description, Date deadline) {
+    public static EventTask createEventTask(String description, Date deadline) {
         assert description != null;
         assert deadline != null;
 
@@ -35,13 +39,13 @@ public class EventTask extends Task {
     }
 
     /**
-     * Sets this EventTask's complete status to true.
-     * Overrides the abstract method in Task.
+     * Sets this util.task.EventTask's complete status to true.
+     * Overrides the abstract method in util.task.Task.
      *
-     * @return A new complete EventTask with the same description, deadline as the EventTask instance.
+     * @return A new complete util.task.EventTask with the same description, deadline as the util.task.EventTask instance.
      */
     @Override
-    EventTask completeTask() {
+    public EventTask completeTask() {
         return new EventTask(this.description, true, this.deadline);
     }
 
