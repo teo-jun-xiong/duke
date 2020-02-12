@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -64,11 +65,11 @@ class Storage {
                 dl.addToList(new ToDoTask(details[2].trim(), isTaskDone));
             } else {
                 String dateTime = stringToDate(details[3]);
-
+                Date deadline = Parser.stringToDate(dateTime);
                 if (details[0].trim().equals("E")) {
-                    dl.addToList(EventTask.createEventTask(details[2].trim(), dateTime));
+                    dl.addToList(EventTask.createEventTask(details[2].trim(), deadline));
                 } else {
-                    dl.addToList(DeadlineTask.createDeadlineTask(details[2].trim(), dateTime));
+                    dl.addToList(DeadlineTask.createDeadlineTask(details[2].trim(), deadline));
                 }
             }
         }

@@ -5,9 +5,11 @@ public class DukeConstant {
     static final String DELIMITER_BY = "/by";
     static final String DELIMITER_AT = "/at";
 
+    //
     static final String TICK_ICON = "\u2714";
     static final String CROSS_ICON = "\u274C";
 
+    // Used in DeadlineTask#createDeadlineTask and EventTask#createEventTask
     static final int TASK_HOUR_START_INDEX = 0;
     static final int TASK_HOUR_END_INDEX = 2;
 
@@ -21,8 +23,9 @@ public class DukeConstant {
     static final String DAY_FIRST = "st";
     static final String DAY_SECOND = "nd";
     static final String DAY_THIRD = "rd";
-    static final String DAY_NTH = "nth";
+    static final String DAY_NTH = "th";
 
+    // Used in Parser#parse
     static final String LIST_COMMAND = "list";
     static final String CLEAR_COMMAND = "clear";
     static final String BYE_COMMAND = "bye";
@@ -33,6 +36,7 @@ public class DukeConstant {
     static final String EVENT_COMMAND = "event";
     static final String DELETE_COMMAND = "delete";
 
+    // Used in Storage#stringToDate
     static final String JAN_STRING = "Jan";
     static final String JAN_NUM = "01";
     static final String FEB_STRING = "Feb";

@@ -1,5 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -26,57 +24,14 @@ public class EventTask extends Task {
      * Throws an exception if the input text is not in the required format.
      *
      * @param description The String description of the event.
-     * @param text        The String of the date and time of the event.
+     * @param deadline    The String of the date and time of the event.
      * @return An Event.
-     * @throws ParseException if parsing of String into Date fails
      */
-    static EventTask createEventTask(String description, String text) throws
-            ParseException, ArrayIndexOutOfBoundsException {
+    static EventTask createEventTask(String description, Date deadline) {
         assert description != null;
-        assert text != null;
+        assert deadline != null;
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-
-        String[] arr = text.split(DukeConstant.DELIMITER_WHITESPACE);
-        String hour = arr[1].substring(DukeConstant.TASK_HOUR_START_INDEX, DukeConstant.TASK_HOUR_END_INDEX);
-        String minute = arr[1].substring(DukeConstant.TASK_HOUR_END_INDEX);
-        String[] date = arr[0].split(DukeConstant.DELIMITER_DATE);
-
-        // Input date is too short/long
-        if (date.length != 3) {
-            throw new InvalidTaskDateTimeException("   The date and/or time format is invalid.\n"
-                    + "   Please format your input as: DD/MM/YYYY HHmm.");
-        }
-
-        String day = date[DukeConstant.DATE_DAY_INDEX];
-        String month = date[DukeConstant.DATE_MONTH_INDEX];
-        String year = date[DukeConstant.DATE_YEAR_INDEX];
-        Date deadline = format.parse(day + "/" + month + "/" + year + " " + hour + ":" + minute);
         return new EventTask(description.trim(), false, deadline);
-    }
-
-    /**
-     * Converts an EventTask's date to a String.
-     *
-     * @return A String of the EventTask's deadline.
-     */
-    private String dateToString() {
-        SimpleDateFormat format = new SimpleDateFormat("E HHmm, MMM d, YYYY");
-        String string = format.format(deadline);
-        String[] arr = string.split(DukeConstant.DELIMITER_COMMA);
-
-        int day = deadline.getDate();
-        if (day == DukeConstant.DAY_ONE) {
-            arr[1] += DukeConstant.DAY_FIRST;
-        } else if (day == DukeConstant.DAY_TWO) {
-            arr[1] += DukeConstant.DAY_SECOND;
-        } else if (day == DukeConstant.DAY_THREE) {
-            arr[1] += DukeConstant.DAY_THIRD;
-        } else {
-            arr[1] += DukeConstant.DAY_NTH;
-        }
-
-        return arr[0] + "," + arr[1] + "," + arr[2];
     }
 
     /**
@@ -93,6 +48,6 @@ public class EventTask extends Task {
     @Override
     public String toString() {
         return "[E] [" + super.getStatusIcon() + "] " + this.description
-                + " (at: " + this.dateToString() + ")";
+                + " (at: " + Parser.dateToString(this.deadline) + ")";
     }
 }

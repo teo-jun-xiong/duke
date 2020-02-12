@@ -1,7 +1,7 @@
 /**
  * A class to abstract the frequently used Strings in Duke.
  */
-class DukeString {
+class DukeUIString {
     private static final String LOGO =
             "                 .-\"\"\"\"-.        .-\"\"\"\"-.\n"
             + "                /        \\      /        \\\n"
@@ -15,10 +15,10 @@ class DukeString {
             + "                   |  |            |  |\n"
             + "                   |  |    oNUS    |  |\n\n";
 
-    static final String HELLO = DukeString.DIVIDER + DukeString.LOGO
+    static final String HELLO = DukeUIString.DIVIDER + DukeUIString.LOGO
             + "   Hello!"
             + "\n   The oNUS is on me to help you be productive!\n"
-            + DukeString.DIVIDER;
+            + DukeUIString.DIVIDER;
 
     static final String ADDED = "   Got it! I've added this task:\n\n";
     static final String DIVIDER = "____________________________________________________________\n\n";
@@ -30,13 +30,13 @@ class DukeString {
     static final String INVALID_DATE_TIME_FORMAT = "   The date and/or time format is invalid.\n";
     static final String DATE_TIME_FORMAT_EXAMPLE = "   Please format your input as: DD/MM/YYYY HHmm.\n";
 
-    static final String UI_BYE = DukeString.DIVIDER + DukeString.BYE + DukeString.DIVIDER;
-    static final String WRITE_ERROR_MESSAGE = DukeString.DIVIDER
-            + "   Something went wrong with saving the file!\n" + DukeString.DIVIDER;
+    static final String UI_BYE = DukeUIString.DIVIDER + DukeUIString.BYE + DukeUIString.DIVIDER;
+    static final String WRITE_ERROR_MESSAGE = DukeUIString.DIVIDER
+            + "   Something went wrong with saving the file!\n" + DukeUIString.DIVIDER;
 
-    static final String DATE_TIME_ERROR_MESSAGE = DukeString.DIVIDER + DukeString.INVALID_DATE_TIME_FORMAT
-            + DukeString.DATE_TIME_FORMAT_EXAMPLE + DukeString.SAMPLE + DukeString.DIVIDER;
+    static final String DATE_TIME_ERROR_MESSAGE = DukeUIString.DIVIDER + DukeUIString.INVALID_DATE_TIME_FORMAT
+            + DukeUIString.DATE_TIME_FORMAT_EXAMPLE + DukeUIString.SAMPLE + DukeUIString.DIVIDER;
 
-    static final String UI_CLEAR = DukeString.DIVIDER + "   Your tasks have been cleared!\n"
-            + "   The list is now empty.\n\n" + DukeString.DIVIDER;
+    static final String UI_CLEAR = DukeUIString.DIVIDER + "   Your tasks have been cleared!\n"
+            + "   The list is now empty.\n\n" + DukeUIString.DIVIDER;
 }
