@@ -111,6 +111,16 @@ public class Parser {
                 sb.append(Ui.printList(Duke.dl));
                 break;
 
+            case DukeConstant.SAVE_COMMAND:
+                try {
+                    Storage.writeTasks(Duke.dl);
+                } catch (IOException e) {
+                    sb.append(Ui.printWriteErrorMessage());
+                }
+
+                sb.append(Ui.printSave());
+                break;
+
             case DukeConstant.CLEAR_COMMAND:
                 Duke.dl = new TaskList();
                 sb.append(Ui.printClear());
@@ -140,7 +150,7 @@ public class Parser {
                         throw new InvalidTaskDateTimeException("   The date of the schedule is invalid.\n" +
                                 "   Please try again!\n");
                     }
-                    
+
                     Date scheduleDate = stringNoTimeToDate(scheduleString);
                     TaskList schedule = Duke.dl.findByDay(scheduleDate);
                     sb.append(Ui.printList(schedule));

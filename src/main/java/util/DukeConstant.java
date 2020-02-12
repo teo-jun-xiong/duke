@@ -29,6 +29,7 @@ public class DukeConstant {
 
     // Used in Parser#parse
     public static final String LIST_COMMAND = "list";
+    public static final String SAVE_COMMAND = "save";
     public static final String CLEAR_COMMAND = "clear";
     public static final String BYE_COMMAND = "bye";
     public static final String FIND_COMMAND = "find";

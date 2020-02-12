@@ -108,4 +108,8 @@ class Ui {
         assert input != null;
         return input.trim();
     }
+
+    public static String printSave() {
+        return DukeUiString.UI_SAVE;
+    }
 }

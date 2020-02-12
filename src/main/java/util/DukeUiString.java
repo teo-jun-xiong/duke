@@ -32,6 +32,7 @@ public class DukeUiString {
     public static final String BYE = "   Your current task list has been saved!\n   Bye, hope to see you again soon!\n";
     public static final String SAMPLE = "   For example:\n      deadline Assignment /by 01/01/2000 1234\n";
     public static final String UI_BYE = DukeUiString.DIVIDER + DukeUiString.BYE + DukeUiString.DIVIDER;
+    public static final String UI_SAVE = DukeUiString.DIVIDER + "   Your list has been saved!" + DukeUiString.DIVIDER;
 
     public static final String INVALID_DATE_TIME_FORMAT = "   The date and/or time format is invalid.\n";
     public static final String DATE_TIME_FORMAT_EXAMPLE = "   Please format your input as: DD/MM/YYYY HHmm.\n";
