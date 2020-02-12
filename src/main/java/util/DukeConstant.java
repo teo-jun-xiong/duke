@@ -37,6 +37,7 @@ public class DukeConstant {
     public static final String DEADLINE_COMMAND = "deadline";
     public static final String EVENT_COMMAND = "event";
     public static final String DELETE_COMMAND = "delete";
+    public static final String HELP_COMMAND = "help";
 
     // Used in Storage#stringToDate
     public static final String JAN_STRING = "Jan";

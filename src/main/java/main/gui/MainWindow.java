@@ -11,8 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import main.Duke;
-import main.gui.DialogBox;
-import util.DukeUIString;
+import util.DukeUiString;
 
 /**
  * Controller for gui.MainWindow. Provides the layout for the other controls.
@@ -41,7 +40,7 @@ public class MainWindow extends AnchorPane {
     public void setDuke(Duke d) {
         duke = d;
         dialogContainer.getChildren().add(
-                0, DialogBox.getDukeDialog(DukeUIString.HELLO, dukeImage)
+                0, DialogBox.getDukeDialog(DukeUiString.HELLO, dukeImage)
         );
     }
 

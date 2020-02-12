@@ -15,13 +15,13 @@ class Ui {
 
     static String printList(TaskList dl) {
         assert dl != null;
-        return DukeUIString.DIVIDER
+        return DukeUiString.DIVIDER
             + dl.printList()
-            + "\n" + DukeUIString.DIVIDER;
+            + "\n" + DukeUiString.DIVIDER;
     }
 
     static String printBye() {
-        return DukeUIString.UI_BYE;
+        return DukeUiString.UI_BYE;
     }
 
     static String readTaskIndex(String input) {
@@ -32,16 +32,16 @@ class Ui {
     static String printDone(TaskList dl, int index) {
         assert dl != null;
 
-        return DukeUIString.DIVIDER
-                + DukeUIString.DONE
+        return DukeUiString.DIVIDER
+                + DukeUiString.DONE
                 + "      " + dl.printTask(index)
-                + DukeUIString.DIVIDER;
+                + DukeUiString.DIVIDER;
     }
 
     static String printErrorMessage(Exception e) {
-        return DukeUIString.DIVIDER
+        return DukeUiString.DIVIDER
                 + e.getMessage() + "\n"
-                + DukeUIString.DIVIDER;
+                + DukeUiString.DIVIDER;
     }
 
     static String readTaskDescription(String input) {
@@ -58,45 +58,49 @@ class Ui {
         assert dl != null;
         assert task != null;
 
-        return DukeUIString.DIVIDER
-                + DukeUIString.ADDED
+        return DukeUiString.DIVIDER
+                + DukeUiString.ADDED
                 + "      " + task.toString()
                 + "\n\n   Now you have " + dl.listSize()
                 + (dl.listSize() == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeUIString.DIVIDER;
+                + DukeUiString.DIVIDER;
     }
 
     static String printDateTimeErrorMessage() {
-        return DukeUIString.DATE_TIME_ERROR_MESSAGE;
+        return DukeUiString.DATE_TIME_ERROR_MESSAGE;
     }
 
     static String printDelete(TaskList dl, int index) {
         assert dl != null;
 
-        return DukeUIString.DIVIDER
-                + DukeUIString.DELETED + "      " + dl.printTask(index)
+        return DukeUiString.DIVIDER
+                + DukeUiString.DELETED + "      " + dl.printTask(index)
                 + "\n   Now you have " + dl.listSize()
                 + (dl.listSize() - 1 == 1 ? " task" : " tasks")
                 + " in the list.\n"
-                + DukeUIString.DIVIDER;
+                + DukeUiString.DIVIDER;
     }
 
     static String printWriteErrorMessage() {
-        return DukeUIString.WRITE_ERROR_MESSAGE;
+        return DukeUiString.WRITE_ERROR_MESSAGE;
     }
 
     static String printFind(String keywords, TaskList found) {
         assert keywords != null;
         assert found != null;
 
-        return DukeUIString.DIVIDER
+        return DukeUiString.DIVIDER
                 + "   Here are the tasks with " + keywords + " in them:\n\n"
                 + found.printList()
-                + "\n" + DukeUIString.DIVIDER;
+                + "\n" + DukeUiString.DIVIDER;
     }
 
     static String printClear() {
-        return DukeUIString.UI_CLEAR;
+        return DukeUiString.UI_CLEAR;
+    }
+
+    public static String printHelp() {
+        return DukeUiString.UI_HELP;
     }
 }

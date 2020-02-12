@@ -1,8 +1,17 @@
 package util;
 
-import exception.*;
+import exception.InvalidCommandArgumentException;
+import exception.InvalidTaskDateTimeException;
+import exception.MissingDateTimeException;
+import exception.MissingDescriptionException;
+import exception.TaskListIndexOutOfBoundsException;
+
 import main.Duke;
-import util.task.*;
+import util.task.DeadlineTask;
+import util.task.EventTask;
+import util.task.Task;
+import util.task.TaskList;
+import util.task.ToDoTask;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -75,6 +84,10 @@ public class Parser {
         StringBuilder sb = new StringBuilder();
 
         switch (command) {
+            case DukeConstant.HELP_COMMAND:
+                sb.append(Ui.printHelp());
+                break;
+
             case DukeConstant.LIST_COMMAND:
                 sb.append(Ui.printList(Duke.dl));
                 break;
@@ -176,7 +189,7 @@ public class Parser {
                             if (arr.length == 0 || arr[1].split(DukeConstant.DELIMITER_WHITESPACE).length != 3) {
                                 throw new MissingDateTimeException("   The date and time of the "
                                         + command + " is missing.\n   Please try again!\n\n"
-                                        + DukeUIString.SAMPLE);
+                                        + DukeUiString.SAMPLE);
                             }
 
                             String[] splitting = arr[1].trim().split(DukeConstant.DELIMITER_WHITESPACE);
