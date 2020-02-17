@@ -12,6 +12,7 @@ class Ui {
         assert dl != null;
         return DukeStringFormat.DIVIDER
             + dl.printList()
+                
             + "\n" + DukeStringFormat.DIVIDER;
     }
 
