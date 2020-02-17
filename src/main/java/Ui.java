@@ -13,7 +13,7 @@ class Ui {
         return DukeStringFormat.DIVIDER
             + dl.printList()
 
-                
+
             + "\n" + DukeStringFormat.DIVIDER;
     }
 
