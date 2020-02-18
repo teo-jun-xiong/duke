@@ -1,20 +1,16 @@
 # User Guide
+Welcome to Duke, your personal assistant!
 
 ## Features 
-
 ### Feature 1 
-Description of feature.
+Add a task with description to Duke.
 
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
+#### `todo <description>` - Describe action
+Adds a task with a description to Duke, and stores it in Duke.
 
 Example of usage: 
-
-`keyword (optional arguments)`
+`todo Visit the dentist`
 
 Expected outcome:
 
-`outcome`
+![todo](todo.png)
